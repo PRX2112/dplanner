@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
@@ -9,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend, AreaChart, Area, BarChart, Bar } from "recharts";
 import { Info, Calculator, TrendingUp, PieChart, Target, PiggyBank, HandCoins, LineChart as LineChartIcon, RefreshCw } from "lucide-react";
 import { motion } from "framer-motion";
+import LanguageSelector from "./LanguageSelector";
 
 // --- Utilities ---
 const inr = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
@@ -202,6 +204,8 @@ const Metric = ({ label, value, sub }) => (
 );
 
 export default function InvestmentPlanner() {
+  const { t } = useTranslation();
+  
   // ---- SIP ----
   const [sip, setSip] = useState({ monthly: 20000, annualReturn: 12, years: 20 });
   const sipFV = useMemo(() => fvSIP(sip.monthly, sip.annualReturn, sip.years), [sip]);
@@ -269,16 +273,17 @@ export default function InvestmentPlanner() {
                 <img className="h-6 w-6 sm:h-7 sm:w-7 md:h-15 md:w-15 icon-hover animate-float" src="./favicon.png" /> 
                 {/* <span className="leading-tight">D-Planner</span> */}
               </div>
-              <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300">Plan, track, and grow your wealth with confidence.</span>
+              <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300">{t('header.title')}</span>
             </h1>
             <p className="text-sm sm:text-base text-gray-300 mt-1 sm:mt-2 animate-fade-in-up animate-delay-200 leading-relaxed">
-              SIP • Lump Sum • Retirement • CAGR • Asset Allocation — now with Tax modelling, XIRR and Goal-based planner.
+              {t('header.subtitle')}
             </p>
           </div>
           <div className="flex items-center gap-2 sm:gap-3 animate-fade-in-up animate-delay-300 mt-3 sm:mt-0">
+            <LanguageSelector />
             <Button variant="outline" onClick={resetAll} className="rounded-2xl btn-enhanced glass text-sm sm:text-base px-3 sm:px-4 py-2">
               <RefreshCw className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2 icon-hover"/>
-              Reset
+              {t('common.reset')}
             </Button>
           </div>
         </header>
@@ -288,32 +293,32 @@ export default function InvestmentPlanner() {
             <TabsList className="grid grid-cols-6 sm:grid-cols-6 w-full min-w-max rounded-2xl glass animate-fade-in-up animate-delay-400">
               <TabsTrigger value="sip" className="rounded-2xl tab-enhanced text-xs sm:text-sm px-2 sm:px-3">
                 <PiggyBank className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2 icon-hover"/>
-                <span className="hidden sm:inline">SIP</span>
-                <span className="sm:hidden">SIP</span>
+                <span className="hidden sm:inline">{t('tabs.sip')}</span>
+                <span className="sm:hidden">{t('tabs.sip')}</span>
               </TabsTrigger>
               <TabsTrigger value="lumpsum" className="rounded-2xl tab-enhanced text-xs sm:text-sm px-2 sm:px-3">
                 <TrendingUp className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2 icon-hover"/>
-                <span className="hidden sm:inline">Lump Sum</span>
+                <span className="hidden sm:inline">{t('tabs.lumpsum')}</span>
                 <span className="sm:hidden">LS</span>
               </TabsTrigger>
               <TabsTrigger value="retire" className="rounded-2xl tab-enhanced text-xs sm:text-sm px-2 sm:px-3">
                 <HandCoins className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2 icon-hover"/>
-                <span className="hidden sm:inline">Retirement</span>
+                <span className="hidden sm:inline">{t('tabs.retirement')}</span>
                 <span className="sm:hidden">Ret</span>
               </TabsTrigger>
               <TabsTrigger value="cagr" className="rounded-2xl tab-enhanced text-xs sm:text-sm px-2 sm:px-3">
                 <LineChartIcon className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2 icon-hover"/>
-                <span className="hidden sm:inline">CAGR</span>
-                <span className="sm:hidden">CAGR</span>
+                <span className="hidden sm:inline">{t('tabs.cagr')}</span>
+                <span className="sm:hidden">{t('tabs.cagr')}</span>
               </TabsTrigger>
               <TabsTrigger value="alloc" className="rounded-2xl tab-enhanced text-xs sm:text-sm px-2 sm:px-3">
                 <PieChart className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2 icon-hover"/>
-                <span className="hidden sm:inline">Allocation</span>
+                <span className="hidden sm:inline">{t('tabs.allocation')}</span>
                 <span className="sm:hidden">Alloc</span>
               </TabsTrigger>
               <TabsTrigger value="advanced" className="rounded-2xl tab-enhanced text-xs sm:text-sm px-2 sm:px-3">
                 <Target className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2 icon-hover"/>
-                <span className="hidden sm:inline">Advanced</span>
+                <span className="hidden sm:inline">{t('tabs.advanced')}</span>
                 <span className="sm:hidden">Adv</span>
               </TabsTrigger>
             </TabsList>
@@ -323,16 +328,16 @@ export default function InvestmentPlanner() {
           <TabsContent value="sip" className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
             <Card className="lg:col-span-2 rounded-2xl card-enhanced glass animate-slide-in-left">
               <CardHeader>
-                <CardTitle className="text-gradient text-lg sm:text-xl">Monthly SIP</CardTitle>
+                <CardTitle className="text-gradient text-lg sm:text-xl">{t('sip.title')}</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-3 sm:gap-4">
-                <Field label="Monthly investment (₹)">
+                <Field label={t('sip.monthlyInvestment')}>
                   <Input type="text" value={sip.monthly} onChange={(e) => setSip({ ...sip, monthly: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                 </Field>
-                <Field label="Expected annual return (%)" hint="Typical equity SIP assumption: 10–14% p.a.">
+                <Field label={t('sip.expectedReturn')} hint={t('sip.hint')}>
                   <Input type="text" step="0.1" value={sip.annualReturn} onChange={(e) => setSip({ ...sip, annualReturn: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                 </Field>
-                <Field label="Investment horizon (years)">
+                <Field label={t('sip.investmentHorizon')}>
                   <Input type="text" step="1" value={sip.years} onChange={(e) => setSip({ ...sip, years: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                 </Field>
               </CardContent>
@@ -340,14 +345,14 @@ export default function InvestmentPlanner() {
 
             <Card className="lg:col-span-3 rounded-2xl card-enhanced glass animate-slide-in-right">
               <CardHeader>
-                <CardTitle className="text-gradient text-lg sm:text-xl">Projected Growth</CardTitle>
+                <CardTitle className="text-gradient text-lg sm:text-xl">{t('sip.projectedGrowth')}</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-3 sm:gap-4">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
-                  <Metric label="Future Value" value={inr.format(sipFV)} />
-                  <Metric label="Total Invested" value={inr.format(sip.monthly * Math.round(sip.years * 12))} />
-                  <Metric label="Wealth Gain" value={inr.format(Math.max(0, sipFV - sip.monthly * Math.round(sip.years * 12)))} />
-                  <Metric label="Years" value={`${sip.years}`} />
+                  <Metric label={t('sip.futureValue')} value={inr.format(sipFV)} />
+                  <Metric label={t('sip.totalInvested')} value={inr.format(sip.monthly * Math.round(sip.years * 12))} />
+                  <Metric label={t('sip.wealthGain')} value={inr.format(Math.max(0, sipFV - sip.monthly * Math.round(sip.years * 12)))} />
+                  <Metric label={t('common.years')} value={`${sip.years}`} />
                 </div>
                 <div className="h-64 sm:h-72 lg:h-80 chart-container">
                   <ResponsiveContainer width="100%" height="100%">
@@ -390,16 +395,16 @@ export default function InvestmentPlanner() {
           <TabsContent value="lumpsum" className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
             <Card className="lg:col-span-2 rounded-2xl card-enhanced glass animate-slide-in-right">
               <CardHeader>
-                <CardTitle className="text-gradient text-lg sm:text-xl">Lump Sum Growth</CardTitle>
+                <CardTitle className="text-gradient text-lg sm:text-xl">{t('lumpsum.title')}</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-3 sm:gap-4">
-                <Field label="Principal (₹)">
+                <Field label={t('lumpsum.principal')}>
                   <Input type="text" value={ls.principal} onChange={(e) => setLs({ ...ls, principal: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                 </Field>
-                <Field label="Expected annual return (%)">
+                <Field label={t('lumpsum.expectedReturn')}>
                   <Input type="text" step="0.1" value={ls.annualReturn} onChange={(e) => setLs({ ...ls, annualReturn: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                 </Field>
-                <Field label="Years">
+                <Field label={t('common.years')}>
                   <Input type="text" step="1" value={ls.years} onChange={(e) => setLs({ ...ls, years: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                 </Field>
               </CardContent>
@@ -407,14 +412,14 @@ export default function InvestmentPlanner() {
 
             <Card className="lg:col-span-3 rounded-2xl card-enhanced glass animate-slide-in-left">
               <CardHeader>
-                <CardTitle className="text-gradient text-lg sm:text-xl">Projection</CardTitle>
+                <CardTitle className="text-gradient text-lg sm:text-xl">{t('lumpsum.projection')}</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-3 sm:gap-4">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
-                  <Metric label="Future Value" value={inr.format(lsFV)} />
-                  <Metric label="Principal" value={inr.format(ls.principal)} />
-                  <Metric label="Wealth Gain" value={inr.format(Math.max(0, lsFV - ls.principal))} />
-                  <Metric label="Years" value={`${ls.years}`} />
+                  <Metric label={t('sip.futureValue')} value={inr.format(lsFV)} />
+                  <Metric label={t('lumpsum.principal')} value={inr.format(ls.principal)} />
+                  <Metric label={t('sip.wealthGain')} value={inr.format(Math.max(0, lsFV - ls.principal))} />
+                  <Metric label={t('common.years')} value={`${ls.years}`} />
                 </div>
                 <div className="h-64 sm:h-72 lg:h-80 chart-container">
                   <ResponsiveContainer width="100%" height="100%">
@@ -445,25 +450,25 @@ export default function InvestmentPlanner() {
           <TabsContent value="retire" className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
             <Card className="lg:col-span-2 rounded-2xl card-enhanced glass animate-slide-in-left">
               <CardHeader>
-                <CardTitle className="text-gradient text-lg sm:text-xl">Retirement Planner</CardTitle>
+                <CardTitle className="text-gradient text-lg sm:text-xl">{t('retirement.title')}</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-3 sm:gap-4">
-                <Field label="Monthly living expense today (₹)">
+                <Field label={t('retirement.monthlyExpense')}>
                   <Input type="text" value={ret.expenseMonthly} onChange={(e) => setRet({ ...ret, expenseMonthly: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                 </Field>
-                <Field label="Inflation (%)">
+                <Field label={t('retirement.inflation')}>
                   <Input type="text" step="0.1" value={ret.inflation} onChange={(e) => setRet({ ...ret, inflation: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                 </Field>
-                <Field label="Years to retirement">
+                <Field label={t('retirement.yearsToRetirement')}>
                   <Input type="text" value={ret.yearsToRetire} onChange={(e) => setRet({ ...ret, yearsToRetire: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                 </Field>
-                <Field label="Years in retirement">
+                <Field label={t('retirement.yearsInRetirement')}>
                   <Input type="text" value={ret.yearsInRetirement} onChange={(e) => setRet({ ...ret, yearsInRetirement: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                 </Field>
-                <Field label="Post-retirement return (%)">
+                <Field label={t('retirement.postRetirementReturn')}>
                   <Input type="text" step="0.1" value={ret.postRetReturn} onChange={(e) => setRet({ ...ret, postRetReturn: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                 </Field>
-                <Field label="Safe Withdrawal Rate (SWR%)" hint="Classic 4% rule; adjust to your risk tolerance">
+                <Field label={t('retirement.safeWithdrawalRate')} hint={t('retirement.swrHint')}>
                   <Input type="text" step="0.1" value={ret.swr} onChange={(e) => setRet({ ...ret, swr: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                 </Field>
               </CardContent>
@@ -471,16 +476,16 @@ export default function InvestmentPlanner() {
 
             <Card className="lg:col-span-3 rounded-2xl card-enhanced glass animate-slide-in-right">
               <CardHeader>
-                <CardTitle className="text-gradient text-lg sm:text-xl">Required Corpus</CardTitle>
+                <CardTitle className="text-gradient text-lg sm:text-xl">{t('retirement.requiredCorpus')}</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-3 sm:gap-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
-                  <Metric label="Annual expense @ retirement" value={inr.format(retSWR.annualExpenseAtRetire)} sub={`After ${ret.yearsToRetire} years`} />
-                  <Metric label="Corpus (SWR rule)" value={inr.format(retSWR.corpus)} sub={`${ret.swr}% rule`} />
-                  <Metric label={`Corpus (for ${ret.yearsInRetirement} yrs)`} value={inr.format(retFinite.corpus)} sub={`Real return ≈ ${(retFinite.realRate*100).toFixed(2)}%`} />
+                  <Metric label={t('retirement.annualExpenseAtRetirement')} value={inr.format(retSWR.annualExpenseAtRetire)} sub={`After ${ret.yearsToRetire} ${t('common.years')}`} />
+                  <Metric label={t('retirement.corpusSWR')} value={inr.format(retSWR.corpus)} sub={`${ret.swr}% rule`} />
+                  <Metric label={t('retirement.corpusFinite', { years: ret.yearsInRetirement })} value={inr.format(retFinite.corpus)} sub={t('retirement.realReturn', { rate: (retFinite.realRate*100).toFixed(2) })} />
                 </div>
                 <div className="text-xs sm:text-sm text-gray-400 leading-relaxed">
-                  <p>Two methods shown: (1) SWR simple rule of thumb, and (2) time‑bound spending using real return. Use the higher of the two for safety.</p>
+                  <p>{t('retirement.methodsNote')}</p>
                 </div>
               </CardContent>
             </Card>
@@ -490,16 +495,16 @@ export default function InvestmentPlanner() {
           <TabsContent value="cagr" className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
             <Card className="lg:col-span-2 rounded-2xl card-enhanced glass animate-slide-in-right">
               <CardHeader>
-                <CardTitle className="text-gradient text-lg sm:text-xl">CAGR Calculator</CardTitle>
+                <CardTitle className="text-gradient text-lg sm:text-xl">{t('cagr.title')}</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-3 sm:gap-4">
-                <Field label="Initial value (₹)">
+                <Field label={t('cagr.initialValue')}>
                   <Input type="text" value={cagr.initial} onChange={(e) => setCagr({ ...cagr, initial: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                 </Field>
-                <Field label="Final value (₹)">
+                <Field label={t('cagr.finalValue')}>
                   <Input type="text" value={cagr.final} onChange={(e) => setCagr({ ...cagr, final: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                 </Field>
-                <Field label="Years">
+                <Field label={t('common.years')}>
                   <Input type="text" value={cagr.years} onChange={(e) => setCagr({ ...cagr, years: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                 </Field>
               </CardContent>
@@ -507,15 +512,15 @@ export default function InvestmentPlanner() {
 
             <Card className="lg:col-span-3 rounded-2xl card-enhanced glass animate-slide-in-left">
               <CardHeader>
-                <CardTitle className="text-gradient text-lg sm:text-xl">Result</CardTitle>
+                <CardTitle className="text-gradient text-lg sm:text-xl">{t('cagr.result')}</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-3 sm:gap-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
-                  <Metric label="CAGR" value={`${cagrPct.toFixed(2)}% p.a.`} />
-                  <Metric label="Growth multiple" value={`× ${(cagr.final / Math.max(1, cagr.initial)).toFixed(2)}`} />
-                  <Metric label="Duration" value={`${cagr.years} years`} />
+                  <Metric label={t('tabs.cagr')} value={`${cagrPct.toFixed(2)}% p.a.`} />
+                  <Metric label={t('cagr.growthMultiple')} value={`× ${(cagr.final / Math.max(1, cagr.initial)).toFixed(2)}`} />
+                  <Metric label={t('cagr.duration')} value={`${cagr.years} ${t('common.years')}`} />
                 </div>
-                <div className="text-xs sm:text-sm text-gray-400 leading-relaxed">CAGR assumes smooth compounding; actual returns vary year to year.</div>
+                <div className="text-xs sm:text-sm text-gray-400 leading-relaxed">{t('cagr.note')}</div>
               </CardContent>
             </Card>
           </TabsContent>
@@ -524,16 +529,16 @@ export default function InvestmentPlanner() {
           <TabsContent value="alloc" className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
             <Card className="lg:col-span-2 rounded-2xl card-enhanced glass animate-slide-in-left">
               <CardHeader>
-                <CardTitle className="text-gradient text-lg sm:text-xl">Asset Allocation</CardTitle>
+                <CardTitle className="text-gradient text-lg sm:text-xl">{t('allocation.title')}</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-3 sm:gap-4">
-                <Field label="Age">
+                <Field label={t('allocation.age')}>
                   <div className="flex items-center gap-2 sm:gap-3">
                     <Slider value={[age]} min={18} max={80} step={1} onValueChange={([v]) => setAge(v)} className="w-full slider" />
                     <div className="w-12 sm:w-14 text-right text-sm sm:text-base font-medium">{age}</div>
                   </div>
                 </Field>
-                <Field label="Rule">
+                <Field label={t('allocation.rule')}>
                   <Select value={rule} onValueChange={setRule}>
                     <SelectTrigger className="text-sm sm:text-base">
                       <SelectValue />
@@ -545,15 +550,15 @@ export default function InvestmentPlanner() {
                   </Select>
                 </Field>
                 <div className="grid grid-cols-2 gap-2 sm:gap-3 mt-2">
-                  <Metric label="Equity" value={`${alloc.equity}%`} />
-                  <Metric label="Debt & Others" value={`${alloc.debt}%`} />
+                  <Metric label={t('allocation.equity')} value={`${alloc.equity}%`} />
+                  <Metric label={t('allocation.debt')} value={`${alloc.debt}%`} />
                 </div>
               </CardContent>
             </Card>
 
             <Card className="lg:col-span-3 rounded-2xl card-enhanced glass animate-slide-in-right">
               <CardHeader>
-                <CardTitle className="text-gradient text-lg sm:text-xl">Allocation Visual</CardTitle>
+                <CardTitle className="text-gradient text-lg sm:text-xl">{t('allocation.visual')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="h-64 sm:h-72 lg:h-80">
@@ -578,7 +583,7 @@ export default function InvestmentPlanner() {
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
-                <div className="text-xs sm:text-sm text-gray-400 mt-3 leading-relaxed">Rule‑based allocation is a starting point. Adjust for risk tolerance, goals, and income stability.</div>
+                <div className="text-xs sm:text-sm text-gray-400 mt-3 leading-relaxed">{t('allocation.note')}</div>
               </CardContent>
             </Card>
           </TabsContent>
@@ -589,19 +594,19 @@ export default function InvestmentPlanner() {
             <div className="xl:col-span-5 grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
               <Card className="lg:col-span-2 rounded-2xl card-enhanced glass animate-slide-in-right">
                 <CardHeader>
-                  <CardTitle className="text-gradient text-lg sm:text-xl">Tax modelling (India basics)</CardTitle>
+                  <CardTitle className="text-gradient text-lg sm:text-xl">{t('advanced.taxModelling.title')}</CardTitle>
                 </CardHeader>
                 <CardContent className="grid gap-3 sm:gap-4">
-                  <Field label="LTCG on equities (₹)">
+                  <Field label={t('advanced.taxModelling.ltcgEquities')}>
                     <Input type="text" value={taxInputs.ltcgGain} onChange={(e) => setTaxInputs({ ...taxInputs, ltcgGain: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                   </Field>
-                  <Field label="STCG on equities (₹)">
+                  <Field label={t('advanced.taxModelling.stcgEquities')}>
                     <Input type="text" value={taxInputs.stcgGain} onChange={(e) => setTaxInputs({ ...taxInputs, stcgGain: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                   </Field>
-                  <Field label="Other income (₹) (salary, interest)">
+                  <Field label={t('advanced.taxModelling.otherIncome')}>
                     <Input type="text" value={taxInputs.otherIncome} onChange={(e) => setTaxInputs({ ...taxInputs, otherIncome: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                   </Field>
-                  <Field label="Investments claimed under 80C (₹)" hint="Max ₹1,50,000">
+                  <Field label={t('advanced.taxModelling.investments80C')} hint={t('advanced.taxModelling.max80C')}>
                     <Input type="text" value={taxInputs.investments80C} onChange={(e) => setTaxInputs({ ...taxInputs, investments80C: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                   </Field>
                 </CardContent>
@@ -609,19 +614,19 @@ export default function InvestmentPlanner() {
 
               <Card className="lg:col-span-3 rounded-2xl card-enhanced glass animate-slide-in-left">
                 <CardHeader>
-                  <CardTitle className="text-gradient text-lg sm:text-xl">Tax Estimate</CardTitle>
+                  <CardTitle className="text-gradient text-lg sm:text-xl">{t('advanced.taxModelling.estimate')}</CardTitle>
                 </CardHeader>
                 <CardContent className="grid gap-3 sm:gap-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
-                    <Metric label="LTCG taxable" value={inr.format(taxResult.ltcgTaxable)} />
-                    <Metric label="LTCG tax" value={inr.format(taxResult.ltcgTax)} />
-                    <Metric label="STCG tax" value={inr.format(taxResult.stcgTax)} />
+                    <Metric label={t('advanced.taxModelling.ltcgTaxable')} value={inr.format(taxResult.ltcgTaxable)} />
+                    <Metric label={t('advanced.taxModelling.ltcgTax')} value={inr.format(taxResult.ltcgTax)} />
+                    <Metric label={t('advanced.taxModelling.stcgTax')} value={inr.format(taxResult.stcgTax)} />
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-                    <Metric label="Eligible 80C" value={inr.format(taxResult.eligible80C)} />
-                    <Metric label="Taxable income after 80C" value={inr.format(taxResult.taxableAfter80C)} />
+                    <Metric label={t('advanced.taxModelling.eligible80C')} value={inr.format(taxResult.eligible80C)} />
+                    <Metric label={t('advanced.taxModelling.taxableAfter80C')} value={inr.format(taxResult.taxableAfter80C)} />
                   </div>
-                  <div className="text-xs sm:text-sm text-gray-400 leading-relaxed">This is a simplified estimator: it shows taxes on capital gains and the 80C deduction impact on taxable income. It does not compute slab-based income tax, cess, surcharge or other deductions.</div>
+                  <div className="text-xs sm:text-sm text-gray-400 leading-relaxed">{t('advanced.taxModelling.disclaimer')}</div>
                 </CardContent>
               </Card>
             </div>
@@ -630,7 +635,7 @@ export default function InvestmentPlanner() {
             <div className="xl:col-span-5 grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
               <Card className="lg:col-span-2 rounded-2xl card-enhanced glass animate-slide-in-left">
                 <CardHeader>
-                  <CardTitle className="text-gradient text-lg sm:text-xl">XIRR — irregular cashflows</CardTitle>
+                  <CardTitle className="text-gradient text-lg sm:text-xl">{t('advanced.xirr.title')}</CardTitle>
                 </CardHeader>
                 <CardContent className="grid gap-3 sm:gap-4">
                   <div className="grid gap-2">
@@ -638,11 +643,11 @@ export default function InvestmentPlanner() {
                       <div key={i} className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                         <Input type="date" value={f.date} onChange={(e) => setXirrFlows(xirrFlows.map((s, j) => (j === i ? { ...s, date: e.target.value } : s)))} className="text-sm sm:text-base" />
                         <Input type="text" value={f.amount} onChange={(e) => setXirrFlows(xirrFlows.map((s, j) => (j === i ? { ...s, amount: num(e.target.value) } : s)))} className="text-sm sm:text-base" />
-                        <Button variant="ghost" onClick={() => setXirrFlows(xirrFlows.filter((_, j) => j !== i))} className="text-xs sm:text-sm">Remove</Button>
+                        <Button variant="ghost" onClick={() => setXirrFlows(xirrFlows.filter((_, j) => j !== i))} className="text-xs sm:text-sm">{t('advanced.xirr.remove')}</Button>
                       </div>
                     ))}
                     <div className="flex gap-2">
-                      <Button onClick={() => setXirrFlows([...xirrFlows, { date: new Date().toISOString().slice(0,10), amount: 0 }])} className="text-sm sm:text-base">Add row</Button>
+                      <Button onClick={() => setXirrFlows([...xirrFlows, { date: new Date().toISOString().slice(0,10), amount: 0 }])} className="text-sm sm:text-base">{t('advanced.xirr.addRow')}</Button>
                     </div>
                   </div>
                 </CardContent>
@@ -650,11 +655,11 @@ export default function InvestmentPlanner() {
 
               <Card className="lg:col-span-3 rounded-2xl card-enhanced glass animate-slide-in-right">
                 <CardHeader>
-                  <CardTitle className="text-gradient text-lg sm:text-xl">XIRR Result</CardTitle>
+                  <CardTitle className="text-gradient text-lg sm:text-xl">{t('advanced.xirr.result')}</CardTitle>
                 </CardHeader>
                 <CardContent className="grid gap-3 sm:gap-4">
                   <Metric label="XIRR" value={isFinite(xirrValue) ? `${(xirrValue*100).toFixed(2)}%` : "—"} />
-                  <div className="text-xs sm:text-sm text-gray-400 leading-relaxed">XIRR is the internal rate of return for irregular cashflows. Negative flows = investments, positive = withdrawals or sale proceeds.</div>
+                  <div className="text-xs sm:text-sm text-gray-400 leading-relaxed">{t('advanced.xirr.description')}</div>
                 </CardContent>
               </Card>
             </div>
@@ -663,22 +668,22 @@ export default function InvestmentPlanner() {
             <div className="xl:col-span-5 grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
               <Card className="lg:col-span-2 rounded-2xl card-enhanced glass animate-slide-in-right">
                 <CardHeader>
-                  <CardTitle className="text-gradient text-lg sm:text-xl">Goal-based SIP planner</CardTitle>
+                  <CardTitle className="text-gradient text-lg sm:text-xl">{t('advanced.goalSip.title')}</CardTitle>
                 </CardHeader>
                 <CardContent className="grid gap-3 sm:gap-4">
-                  <Field label="Target amount (₹)">
+                  <Field label={t('advanced.goalSip.targetAmount')}>
                     <Input type="text" value={goal.target} onChange={(e) => setGoal({ ...goal, target: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                   </Field>
-                  <Field label="Years to goal">
+                  <Field label={t('advanced.goalSip.yearsToGoal')}>
                     <Input type="text" value={goal.years} onChange={(e) => setGoal({ ...goal, years: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                   </Field>
-                  <Field label="Expected annual return (%)">
+                  <Field label={t('advanced.goalSip.expectedReturn')}>
                     <Input type="text" step="0.1" value={goal.expectedReturn} onChange={(e) => setGoal({ ...goal, expectedReturn: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                   </Field>
-                  <Field label="Existing corpus (₹)">
+                  <Field label={t('advanced.goalSip.existingCorpus')}>
                     <Input type="text" value={goal.existingCorpus} onChange={(e) => setGoal({ ...goal, existingCorpus: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                   </Field>
-                  <Field label="Existing lump sum to add (₹)">
+                  <Field label={t('advanced.goalSip.existingLumpsum')}>
                     <Input type="text" value={goal.lumpsum} onChange={(e) => setGoal({ ...goal, lumpsum: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
                   </Field>
                 </CardContent>
@@ -686,14 +691,14 @@ export default function InvestmentPlanner() {
 
               <Card className="lg:col-span-3 rounded-2xl card-enhanced glass animate-slide-in-left">
                 <CardHeader>
-                  <CardTitle className="text-gradient text-lg sm:text-xl">Required SIP</CardTitle>
+                  <CardTitle className="text-gradient text-lg sm:text-xl">{t('advanced.goalSip.requiredSip')}</CardTitle>
                 </CardHeader>
                 <CardContent className="grid gap-3 sm:gap-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-                    <Metric label="Required monthly SIP" value={inr.format(Math.max(0, Math.round(requiredMonthly)))} />
-                    <Metric label="Target after" value={`${goal.years} years`} />
+                    <Metric label={t('advanced.goalSip.monthlySip')} value={inr.format(Math.max(0, Math.round(requiredMonthly)))} />
+                    <Metric label={t('advanced.goalSip.targetAfter')} value={`${goal.years} ${t('common.years')}`} />
                   </div>
-                  <div className="text-xs sm:text-sm text-gray-400 leading-relaxed">This calculation assumes contributions at the start of each month and a constant annual return. Adjust assumptions for more conservative planning.</div>
+                  <div className="text-xs sm:text-sm text-gray-400 leading-relaxed">{t('advanced.goalSip.note')}</div>
                 </CardContent>
               </Card>
             </div>

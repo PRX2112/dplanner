@@ -1,0 +1,114 @@
+{
+  "common": {
+    "reset": "Reset",
+    "years": "Years",
+    "months": "Months",
+    "currency": "₹"
+  },
+  "header": {
+    "title": "Plan, track, and grow your wealth with confidence.",
+    "subtitle": "SIP • Lump Sum • Retirement • CAGR • Asset Allocation — now with Tax modelling, XIRR and Goal-based planner."
+  },
+  "tabs": {
+    "sip": "SIP",
+    "lumpsum": "Lump Sum",
+    "retirement": "Retirement",
+    "cagr": "CAGR",
+    "allocation": "Allocation",
+    "advanced": "Advanced"
+  },
+  "sip": {
+    "title": "Monthly SIP",
+    "monthlyInvestment": "Monthly investment (₹)",
+    "expectedReturn": "Expected annual return (%)",
+    "investmentHorizon": "Investment horizon (years)",
+    "projectedGrowth": "Projected Growth",
+    "futureValue": "Future Value",
+    "totalInvested": "Total Invested",
+    "wealthGain": "Wealth Gain",
+    "hint": "Typical equity SIP assumption: 10–14% p.a."
+  },
+  "lumpsum": {
+    "title": "Lump Sum Growth",
+    "principal": "Principal (₹)",
+    "expectedReturn": "Expected annual return (%)",
+    "projection": "Projection"
+  },
+  "retirement": {
+    "title": "Retirement Planner",
+    "monthlyExpense": "Monthly living expense today (₹)",
+    "inflation": "Inflation (%)",
+    "yearsToRetirement": "Years to retirement",
+    "yearsInRetirement": "Years in retirement",
+    "postRetirementReturn": "Post-retirement return (%)",
+    "safeWithdrawalRate": "Safe Withdrawal Rate (SWR%)",
+    "swrHint": "Classic 4% rule; adjust to your risk tolerance",
+    "requiredCorpus": "Required Corpus",
+    "annualExpenseAtRetirement": "Annual expense @ retirement",
+    "corpusSWR": "Corpus (SWR rule)",
+    "corpusFinite": "Corpus (for {{years}} yrs)",
+    "realReturn": "Real return ≈ {{rate}}%",
+    "methodsNote": "Two methods shown: (1) SWR simple rule of thumb, and (2) time‑bound spending using real return. Use the higher of the two for safety."
+  },
+  "cagr": {
+    "title": "CAGR Calculator",
+    "initialValue": "Initial value (₹)",
+    "finalValue": "Final value (₹)",
+    "result": "Result",
+    "growthMultiple": "Growth multiple",
+    "duration": "Duration",
+    "note": "CAGR assumes smooth compounding; actual returns vary year to year."
+  },
+  "allocation": {
+    "title": "Asset Allocation",
+    "age": "Age",
+    "rule": "Rule",
+    "equity": "Equity",
+    "debt": "Debt & Others",
+    "visual": "Allocation Visual",
+    "note": "Rule‑based allocation is a starting point. Adjust for risk tolerance, goals, and income stability."
+  },
+  "advanced": {
+    "title": "Advanced",
+    "taxModelling": {
+      "title": "Tax modelling (India basics)",
+      "ltcgEquities": "LTCG on equities (₹)",
+      "stcgEquities": "STCG on equities (₹)",
+      "otherIncome": "Other income (₹) (salary, interest)",
+      "investments80C": "Investments claimed under 80C (₹)",
+      "max80C": "Max ₹1,50,000",
+      "estimate": "Tax Estimate",
+      "ltcgTaxable": "LTCG taxable",
+      "ltcgTax": "LTCG tax",
+      "stcgTax": "STCG tax",
+      "eligible80C": "Eligible 80C",
+      "taxableAfter80C": "Taxable income after 80C",
+      "disclaimer": "This is a simplified estimator: it shows taxes on capital gains and the 80C deduction impact on taxable income. It does not compute slab-based income tax, cess, surcharge or other deductions."
+    },
+    "xirr": {
+      "title": "XIRR — irregular cashflows",
+      "remove": "Remove",
+      "addRow": "Add row",
+      "result": "XIRR Result",
+      "description": "XIRR is the internal rate of return for irregular cashflows. Negative flows = investments, positive = withdrawals or sale proceeds."
+    },
+    "goalSip": {
+      "title": "Goal-based SIP planner",
+      "targetAmount": "Target amount (₹)",
+      "yearsToGoal": "Years to goal",
+      "expectedReturn": "Expected annual return (%)",
+      "existingCorpus": "Existing corpus (₹)",
+      "existingLumpsum": "Existing lump sum to add (₹)",
+      "requiredSip": "Required SIP",
+      "monthlySip": "Required monthly SIP",
+      "targetAfter": "Target after",
+      "note": "This calculation assumes contributions at the start of each month and a constant annual return. Adjust assumptions for more conservative planning."
+    }
+  },
+  "language": {
+    "select": "Select Language",
+    "english": "English",
+    "hindi": "हिंदी",
+    "gujarati": "ગુજરાતી"
+  }
+}

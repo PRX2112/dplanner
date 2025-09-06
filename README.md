@@ -88,6 +88,12 @@ A comprehensive, responsive React-based investment planning application designed
 - **High Contrast**: Readable text and visual elements
 - **Focus Management**: Clear focus indicators
 
+### **Internationalization**
+- **Google Translate Integration**: Built-in language translation support
+- **Multi-language Support**: Translate the entire application to 100+ languages
+- **Responsive Translate Widget**: Mobile-optimized translation interface
+- **Seamless Integration**: Styled to match the application's design theme
+
 ## 🛠️ **Tech Stack**
 
 ### **Frontend Framework**
