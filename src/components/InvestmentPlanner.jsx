@@ -266,10 +266,10 @@ export default function InvestmentPlanner() {
           <div className="flex-1">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 text-gradient">
               <div className="flex items-center gap-2 sm:gap-3">
-                <Calculator className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 icon-hover animate-float" /> 
-                <span className="leading-tight">Investment Planning</span>
+                <img className="h-6 w-6 sm:h-7 sm:w-7 md:h-15 md:w-15 icon-hover animate-float" src="./favicon.png" /> 
+                {/* <span className="leading-tight">D-Planner</span> */}
               </div>
-              <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300">Web App</span>
+              <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300">Plan, track, and grow your wealth with confidence.</span>
             </h1>
             <p className="text-sm sm:text-base text-gray-300 mt-1 sm:mt-2 animate-fade-in-up animate-delay-200 leading-relaxed">
               SIP • Lump Sum • Retirement • CAGR • Asset Allocation — now with Tax modelling, XIRR and Goal-based planner.
@@ -388,7 +388,7 @@ export default function InvestmentPlanner() {
 
           {/* Lump Sum */}
           <TabsContent value="lumpsum" className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
-            <Card className="lg:col-span-2 rounded-2xl card-enhanced glass animate-slide-in-left">
+            <Card className="lg:col-span-2 rounded-2xl card-enhanced glass animate-slide-in-right">
               <CardHeader>
                 <CardTitle className="text-gradient text-lg sm:text-xl">Lump Sum Growth</CardTitle>
               </CardHeader>
@@ -405,7 +405,7 @@ export default function InvestmentPlanner() {
               </CardContent>
             </Card>
 
-            <Card className="lg:col-span-3 rounded-2xl card-enhanced glass animate-slide-in-right">
+            <Card className="lg:col-span-3 rounded-2xl card-enhanced glass animate-slide-in-left">
               <CardHeader>
                 <CardTitle className="text-gradient text-lg sm:text-xl">Projection</CardTitle>
               </CardHeader>
@@ -443,7 +443,7 @@ export default function InvestmentPlanner() {
 
           {/* Retirement */}
           <TabsContent value="retire" className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
-            <Card className="lg:col-span-2 rounded-2xl card-enhanced glass">
+            <Card className="lg:col-span-2 rounded-2xl card-enhanced glass animate-slide-in-left">
               <CardHeader>
                 <CardTitle className="text-gradient text-lg sm:text-xl">Retirement Planner</CardTitle>
               </CardHeader>
@@ -469,7 +469,7 @@ export default function InvestmentPlanner() {
               </CardContent>
             </Card>
 
-            <Card className="lg:col-span-3 rounded-2xl card-enhanced glass">
+            <Card className="lg:col-span-3 rounded-2xl card-enhanced glass animate-slide-in-right">
               <CardHeader>
                 <CardTitle className="text-gradient text-lg sm:text-xl">Required Corpus</CardTitle>
               </CardHeader>
@@ -488,7 +488,7 @@ export default function InvestmentPlanner() {
 
           {/* CAGR */}
           <TabsContent value="cagr" className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
-            <Card className="lg:col-span-2 rounded-2xl card-enhanced glass">
+            <Card className="lg:col-span-2 rounded-2xl card-enhanced glass animate-slide-in-right">
               <CardHeader>
                 <CardTitle className="text-gradient text-lg sm:text-xl">CAGR Calculator</CardTitle>
               </CardHeader>
@@ -505,7 +505,7 @@ export default function InvestmentPlanner() {
               </CardContent>
             </Card>
 
-            <Card className="lg:col-span-3 rounded-2xl card-enhanced glass">
+            <Card className="lg:col-span-3 rounded-2xl card-enhanced glass animate-slide-in-left">
               <CardHeader>
                 <CardTitle className="text-gradient text-lg sm:text-xl">Result</CardTitle>
               </CardHeader>
@@ -522,7 +522,7 @@ export default function InvestmentPlanner() {
 
           {/* Allocation */}
           <TabsContent value="alloc" className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
-            <Card className="lg:col-span-2 rounded-2xl card-enhanced glass">
+            <Card className="lg:col-span-2 rounded-2xl card-enhanced glass animate-slide-in-left">
               <CardHeader>
                 <CardTitle className="text-gradient text-lg sm:text-xl">Asset Allocation</CardTitle>
               </CardHeader>
@@ -551,7 +551,7 @@ export default function InvestmentPlanner() {
               </CardContent>
             </Card>
 
-            <Card className="lg:col-span-3 rounded-2xl card-enhanced glass">
+            <Card className="lg:col-span-3 rounded-2xl card-enhanced glass animate-slide-in-right">
               <CardHeader>
                 <CardTitle className="text-gradient text-lg sm:text-xl">Allocation Visual</CardTitle>
               </CardHeader>
@@ -587,7 +587,7 @@ export default function InvestmentPlanner() {
           <TabsContent value="advanced" className="grid grid-cols-1 xl:grid-cols-5 gap-4 sm:gap-6">
             {/* Tax Modelling Section */}
             <div className="xl:col-span-5 grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
-              <Card className="lg:col-span-2 rounded-2xl card-enhanced glass">
+              <Card className="lg:col-span-2 rounded-2xl card-enhanced glass animate-slide-in-right">
                 <CardHeader>
                   <CardTitle className="text-gradient text-lg sm:text-xl">Tax modelling (India basics)</CardTitle>
                 </CardHeader>
@@ -607,7 +607,7 @@ export default function InvestmentPlanner() {
                 </CardContent>
               </Card>
 
-              <Card className="lg:col-span-3 rounded-2xl card-enhanced glass">
+              <Card className="lg:col-span-3 rounded-2xl card-enhanced glass animate-slide-in-left">
                 <CardHeader>
                   <CardTitle className="text-gradient text-lg sm:text-xl">Tax Estimate</CardTitle>
                 </CardHeader>
@@ -628,7 +628,7 @@ export default function InvestmentPlanner() {
 
             {/* XIRR Section */}
             <div className="xl:col-span-5 grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
-              <Card className="lg:col-span-2 rounded-2xl card-enhanced glass">
+              <Card className="lg:col-span-2 rounded-2xl card-enhanced glass animate-slide-in-left">
                 <CardHeader>
                   <CardTitle className="text-gradient text-lg sm:text-xl">XIRR — irregular cashflows</CardTitle>
                 </CardHeader>
@@ -648,7 +648,7 @@ export default function InvestmentPlanner() {
                 </CardContent>
               </Card>
 
-              <Card className="lg:col-span-3 rounded-2xl card-enhanced glass">
+              <Card className="lg:col-span-3 rounded-2xl card-enhanced glass animate-slide-in-right">
                 <CardHeader>
                   <CardTitle className="text-gradient text-lg sm:text-xl">XIRR Result</CardTitle>
                 </CardHeader>
@@ -661,7 +661,7 @@ export default function InvestmentPlanner() {
 
             {/* Goal-based SIP Section */}
             <div className="xl:col-span-5 grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
-              <Card className="lg:col-span-2 rounded-2xl card-enhanced glass">
+              <Card className="lg:col-span-2 rounded-2xl card-enhanced glass animate-slide-in-right">
                 <CardHeader>
                   <CardTitle className="text-gradient text-lg sm:text-xl">Goal-based SIP planner</CardTitle>
                 </CardHeader>
@@ -684,7 +684,7 @@ export default function InvestmentPlanner() {
                 </CardContent>
               </Card>
 
-              <Card className="lg:col-span-3 rounded-2xl card-enhanced glass">
+              <Card className="lg:col-span-3 rounded-2xl card-enhanced glass animate-slide-in-left">
                 <CardHeader>
                   <CardTitle className="text-gradient text-lg sm:text-xl">Required SIP</CardTitle>
                 </CardHeader>
