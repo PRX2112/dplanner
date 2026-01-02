@@ -4,7 +4,9 @@
     "print": "પ્રિંટ",
     "years": "વર્ષ",
     "months": "મહિના",
-    "currency": "₹"
+    "currency": "₹",
+    "totalVisits": "કુલ ભેટો",
+    "uniqueVisitors": "અનોખા ભેટકારો"
   },
   "header": {
     "title": "વિશ્વાસ સાથે તમારી સંપત્તિની યોજના બનાવો, ટ્રેક કરો અને વધારો.",

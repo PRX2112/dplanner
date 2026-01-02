@@ -4,7 +4,9 @@
     "print": "Print",
     "years": "Years",
     "months": "Months",
-    "currency": "₹"
+    "currency": "₹",
+    "totalVisits": "Total Visits",
+    "uniqueVisitors": "Unique Visitors"
   },
   "header": {
     "title": "Plan, track, and grow your wealth with confidence.",
