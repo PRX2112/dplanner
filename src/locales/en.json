@@ -1,6 +1,7 @@
 {
   "common": {
     "reset": "Reset",
+    "print": "Print",
     "years": "Years",
     "months": "Months",
     "currency": "₹"
@@ -19,7 +20,7 @@
   },
   "sip": {
     "title": "Monthly SIP",
-    "monthlyInvestment": "Monthly investment (₹)",
+    "monthlyInvestment": "Monthly investment ",
     "expectedReturn": "Expected annual return (%)",
     "investmentHorizon": "Investment horizon (years)",
     "projectedGrowth": "Projected Growth",
@@ -30,13 +31,13 @@
   },
   "lumpsum": {
     "title": "Lump Sum Growth",
-    "principal": "Principal (₹)",
+    "principal": "Principal ",
     "expectedReturn": "Expected annual return (%)",
     "projection": "Projection"
   },
   "retirement": {
     "title": "Retirement Planner",
-    "monthlyExpense": "Monthly living expense today (₹)",
+    "monthlyExpense": "Monthly living expense today ",
     "inflation": "Inflation (%)",
     "yearsToRetirement": "Years to retirement",
     "yearsInRetirement": "Years in retirement",
@@ -52,8 +53,8 @@
   },
   "cagr": {
     "title": "CAGR Calculator",
-    "initialValue": "Initial value (₹)",
-    "finalValue": "Final value (₹)",
+    "initialValue": "Initial value ",
+    "finalValue": "Final value ",
     "result": "Result",
     "growthMultiple": "Growth multiple",
     "duration": "Duration",
@@ -72,11 +73,11 @@
     "title": "Advanced",
     "taxModelling": {
       "title": "Tax modelling (India basics)",
-      "ltcgEquities": "LTCG on equities (₹)",
-      "stcgEquities": "STCG on equities (₹)",
-      "otherIncome": "Other income (₹) (salary, interest)",
-      "investments80C": "Investments claimed under 80C (₹)",
-      "max80C": "Max ₹1,50,000",
+      "ltcgEquities": "LTCG on equities",
+      "stcgEquities": "STCG on equities",
+      "otherIncome": "Other income (salary, interest)",
+      "investments80C": "Investments claimed under 80C",
+      "max80C": "Max",
       "estimate": "Tax Estimate",
       "ltcgTaxable": "LTCG taxable",
       "ltcgTax": "LTCG tax",
@@ -94,11 +95,11 @@
     },
     "goalSip": {
       "title": "Goal-based SIP planner",
-      "targetAmount": "Target amount (₹)",
+      "targetAmount": "Target amount ",
       "yearsToGoal": "Years to goal",
       "expectedReturn": "Expected annual return (%)",
-      "existingCorpus": "Existing corpus (₹)",
-      "existingLumpsum": "Existing lump sum to add (₹)",
+      "existingCorpus": "Existing corpus ",
+      "existingLumpsum": "Existing lump sum to add ",
       "requiredSip": "Required SIP",
       "monthlySip": "Required monthly SIP",
       "targetAfter": "Target after",

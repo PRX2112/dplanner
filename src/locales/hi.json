@@ -1,6 +1,7 @@
 {
   "common": {
     "reset": "रीसेट",
+    "print": "प्रिंट",
     "years": "वर्ष",
     "months": "महीने",
     "currency": "₹"
@@ -19,7 +20,7 @@
   },
   "sip": {
     "title": "मासिक SIP",
-    "monthlyInvestment": "मासिक निवेश (₹)",
+    "monthlyInvestment": "मासिक निवेश",
     "expectedReturn": "अपेक्षित वार्षिक रिटर्न (%)",
     "investmentHorizon": "निवेश अवधि (वर्ष)",
     "projectedGrowth": "अनुमानित वृद्धि",
@@ -30,13 +31,13 @@
   },
   "lumpsum": {
     "title": "एकमुश्त वृद्धि",
-    "principal": "मूलधन (₹)",
+    "principal": "मूलधन",
     "expectedReturn": "अपेक्षित वार्षिक रिटर्न (%)",
     "projection": "प्रक्षेपण"
   },
   "retirement": {
     "title": "सेवानिवृत्ति योजनाकार",
-    "monthlyExpense": "आज का मासिक जीवन व्यय (₹)",
+    "monthlyExpense": "आज का मासिक जीवन व्यय",
     "inflation": "मुद्रास्फीति (%)",
     "yearsToRetirement": "सेवानिवृत्ति तक वर्ष",
     "yearsInRetirement": "सेवानिवृत्ति में वर्ष",
@@ -52,8 +53,8 @@
   },
   "cagr": {
     "title": "CAGR कैलकुलेटर",
-    "initialValue": "प्रारंभिक मूल्य (₹)",
-    "finalValue": "अंतिम मूल्य (₹)",
+    "initialValue": "प्रारंभिक मूल्य",
+    "finalValue": "अंतिम मूल्य",
     "result": "परिणाम",
     "growthMultiple": "वृद्धि गुणक",
     "duration": "अवधि",
@@ -72,11 +73,11 @@
     "title": "उन्नत",
     "taxModelling": {
       "title": "कर मॉडलिंग (भारत बेसिक्स)",
-      "ltcgEquities": "इक्विटी पर LTCG (₹)",
-      "stcgEquities": "इक्विटी पर STCG (₹)",
-      "otherIncome": "अन्य आय (₹) (वेतन, ब्याज)",
-      "investments80C": "80C के तहत दावा किए गए निवेश (₹)",
-      "max80C": "अधिकतम ₹1,50,000",
+      "ltcgEquities": "इक्विटी पर LTCG",
+      "stcgEquities": "इक्विटी पर STCG",
+      "otherIncome": "अन्य आय (वेतन, ब्याज)",
+      "investments80C": "80C के तहत दावा किए गए निवेश",
+      "max80C": "अधिकतम",
       "estimate": "कर अनुमान",
       "ltcgTaxable": "LTCG कर योग्य",
       "ltcgTax": "LTCG कर",
@@ -94,11 +95,11 @@
     },
     "goalSip": {
       "title": "लक्ष्य-आधारित SIP योजनाकार",
-      "targetAmount": "लक्ष्य राशि (₹)",
+      "targetAmount": "लक्ष्य राशि",
       "yearsToGoal": "लक्ष्य तक वर्ष",
       "expectedReturn": "अपेक्षित वार्षिक रिटर्न (%)",
-      "existingCorpus": "मौजूदा कॉर्पस (₹)",
-      "existingLumpsum": "जोड़ने के लिए मौजूदा एकमुश्त (₹)",
+      "existingCorpus": "मौजूदा कॉर्पस",
+      "existingLumpsum": "जोड़ने के लिए मौजूदा एकमुश्त",
       "requiredSip": "आवश्यक SIP",
       "monthlySip": "आवश्यक मासिक SIP",
       "targetAfter": "के बाद लक्ष्य",
