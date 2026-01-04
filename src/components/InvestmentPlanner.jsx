@@ -547,7 +547,7 @@ export default function InvestmentPlanner() {
                   <Metric label={t('sip.wealthGain')} value={formatMoney(Math.max(0, sipFV - sip.monthly * Math.round(sip.years * 12)))} />
                   <Metric label={t('common.years')} value={`${sip.years}`} />
                 </div>
-                <div className="h-56 sm:h-72 lg:h-80 chart-container">
+                <div className="h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[450px] chart-container">
                   <ResponsiveContainer width="100%" height="100%">
                     <AreaChart data={sipData} margin={{ left: 8, right: 8, top: 10, bottom: 0 }}>
                       <defs>
@@ -620,7 +620,7 @@ export default function InvestmentPlanner() {
                   <Metric label={t('sip.wealthGain')} value={formatMoney(Math.max(0, lsFV - ls.principal))} />
                   <Metric label={t('common.years')} value={`${ls.years}`} />
                 </div>
-                <div className="h-56 sm:h-72 lg:h-80 chart-container">
+                <div className="h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[450px] chart-container">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={lsData} margin={{ left: 8, right: 8, top: 10, bottom: 0 }}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.3} />
@@ -778,7 +778,7 @@ export default function InvestmentPlanner() {
                 <CardTitle className="text-gradient text-lg sm:text-xl">{t('allocation.visual')}</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="h-56 sm:h-72 lg:h-80">
+                <div className="h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[450px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={[{ name: "Portfolio", Equity: alloc.equity, Debt: alloc.debt }]}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.3} />

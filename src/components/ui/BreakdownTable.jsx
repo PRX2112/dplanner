@@ -58,7 +58,7 @@ const BreakdownTable = ({ data, type = 'sip' }) => {
 
     return (
         <div className="w-full mt-6 overflow-hidden rounded-xl border border-white/10 bg-black/20">
-            <div className="overflow-x-auto max-h-[300px] sm:max-h-[400px] overflow-y-auto no-scrollbar">
+            <div className="overflow-x-auto max-h-[350px] sm:max-h-[450px] lg:max-h-[600px] overflow-y-auto no-scrollbar">
                 <table className="w-full text-xs sm:text-sm">
                     <thead className="sticky top-0 bg-black/80 backdrop-blur-sm z-10 border-b border-white/10">
                         {renderHeader()}
