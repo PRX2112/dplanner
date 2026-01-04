@@ -44,13 +44,14 @@ A comprehensive, responsive React-based investment planning application designed
 - **Portfolio Visualization**: Clear representation of asset distribution
 
 ### 🧾 **Tax Modeling (India)**
+- **Region Specific**: Dedicated Indian tax regime calculations
 - **Capital Gains Tax**:
   - **LTCG (Long-term)**: 10% on gains above ₹1,00,000
   - **STCG (Short-term)**: 15% on equity gains
 - **Section 80C Deductions**: Up to ₹1,50,000 tax savings
 - **Taxable Income Calculation**: Shows impact of deductions
 - **Simplified Tax Estimation**: Educational tool for tax planning
-- **Indian Tax Rules**: Based on current Indian tax regulations
+
 
 ### 📈 **XIRR Calculator**
 - **Irregular Cash Flows**: Handle investments with varying amounts and dates
@@ -88,11 +89,19 @@ A comprehensive, responsive React-based investment planning application designed
 - **High Contrast**: Readable text and visual elements
 - **Focus Management**: Clear focus indicators
 
-### **Internationalization**
-- **Google Translate Integration**: Built-in language translation support
-- **Multi-language Support**: Translate the entire application to 100+ languages
-- **Responsive Translate Widget**: Mobile-optimized translation interface
-- **Seamless Integration**: Styled to match the application's design theme
+### **Global Reach**
+- **Multi-Currency Support**: 
+  - Real-time switching between INR (₹), USD ($), EUR (€), GBP (£), JPY (¥), and AED.
+  - Formatting adapted to selected locale (e.g., Lakhs/Crores for INR, standard millions for others).
+  - Persists user preference across sessions.
+
+- **Native Internationalization (i18n)**: 
+  - **Powered by react-i18next**: Robust translation management.
+  - **Supported Languages**: English, Hindi (हिंदी), and Gujarati (ગુજરાતી).
+  - **Language Detector**: Automatically detects user's preferred language.
+  - **Seamless Switching**: Instant language toggle without page reload.
+
+
 
 ## 🛠️ **Tech Stack**
 
@@ -298,6 +307,11 @@ investment-planner/
 - **Card Animations**: Hover effects and slide-in animations
 - **Loading States**: Skeleton loading and smooth transitions
 - **Interactive Elements**: Button hover effects and icon animations
+
+### **Analytics**
+- **Visitor Counter**: Tracks total and unique daily visitors.
+- **Privacy Focused**: Uses local storage for unique visitor tracking without external cookies.
+- **Visual Counters**: Animated counter display for engagement.
 
 ### **Data Visualization**
 - **Interactive Charts**: Hover tooltips and responsive scaling

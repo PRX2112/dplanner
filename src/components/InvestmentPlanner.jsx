@@ -13,9 +13,7 @@ import { motion } from "framer-motion";
 import CurrencySelector from "./CurrencySelector";
 import LanguageSelector from "./LanguageSelector";
 import { useCurrency } from "../context/CurrencyContext";
-
-// Lazy load VisitorCounter for performance
-const VisitorCounter = lazy(() => import("./VisitorCounter"));
+import BreakdownTable from "./ui/BreakdownTable";
 
 // --- Utilities ---
 // const inr removed - using dynamic formatMoney instead
@@ -95,6 +93,26 @@ const retirementCorpus_FiniteYears = ({ monthlyExpenseToday, inflationPct, years
 const calcCAGR = ({ initial, final, years }) => {
   if (initial <= 0 || years <= 0) return 0;
   return (Math.pow(final / initial, 1 / years) - 1) * 100;
+};
+
+const retirementSchedule = ({ corpus, annualExpenseAtRetire, yearsInRetirement, inflationPct, postRetReturnPct }) => {
+  const rows = [];
+  const g = annualPctToRate(inflationPct);
+  const r = annualPctToRate(postRetReturnPct);
+  let currentCorpus = corpus;
+  let currentExpense = annualExpenseAtRetire;
+
+  for (let y = 1; y <= yearsInRetirement; y++) {
+    currentCorpus = currentCorpus - currentExpense;
+    currentCorpus = currentCorpus * (1 + r);
+    rows.push({
+      age: y,
+      expenses: currentExpense,
+      corpus: Math.max(0, currentCorpus)
+    });
+    currentExpense = currentExpense * (1 + g);
+  }
+  return rows;
 };
 
 // Age-based asset allocation
@@ -562,6 +580,12 @@ export default function InvestmentPlanner() {
                     </AreaChart>
                   </ResponsiveContainer>
                 </div>
+                <div className="mt-6">
+                  <BreakdownTable
+                    data={sipData.map(d => ({ ...d, interest: d.value - d.invested, total: d.value }))}
+                    type="sip"
+                  />
+                </div>
               </CardContent>
             </Card>
           </TabsContent>
@@ -617,6 +641,12 @@ export default function InvestmentPlanner() {
                     </LineChart>
                   </ResponsiveContainer>
                 </div>
+                <div className="mt-6">
+                  <BreakdownTable
+                    data={lsData.map(d => ({ ...d, interest: d.value - d.invested, total: d.value }))}
+                    type="lumpsum"
+                  />
+                </div>
               </CardContent>
             </Card>
           </TabsContent>
@@ -661,6 +691,18 @@ export default function InvestmentPlanner() {
                 </div>
                 <div className="text-xs sm:text-sm text-gray-400 leading-relaxed">
                   <p>{t('retirement.methodsNote')}</p>
+                </div>
+                <div className="mt-6">
+                  <BreakdownTable
+                    data={retirementSchedule({
+                      corpus: retFinite.corpus,
+                      annualExpenseAtRetire: retFinite.annualExpenseAtRetire,
+                      yearsInRetirement: ret.yearsInRetirement,
+                      inflationPct: ret.inflation,
+                      postRetReturnPct: ret.postRetReturn
+                    })}
+                    type="retirement"
+                  />
                 </div>
               </CardContent>
             </Card>
@@ -883,10 +925,6 @@ export default function InvestmentPlanner() {
 
         <footer className="max-w-6xl mx-auto mt-6 sm:mt-8 lg:mt-10 text-xs sm:text-sm text-gray-400 leading-relaxed glass p-4 sm:p-6 rounded-2xl animate-fade-in-up animate-delay-500">
           <p><strong className="text-white">Disclaimer:</strong> This tool is for education and planning. It does not provide financial advice. Returns are assumptions, not guarantees. Taxes, fees, and product-specific rules (e.g., exact income tax slab computation, cess, surcharge, LTCG exemptions with indexation for non-equity assets) are simplified here. For precise tax filing and investment advice consult a licensed professional.</p>
-
-          <Suspense fallback={<div className="text-center mt-4 text-gray-500">Loading...</div>}>
-            <VisitorCounter />
-          </Suspense>
         </footer>
       </motion.div>
     </div>
