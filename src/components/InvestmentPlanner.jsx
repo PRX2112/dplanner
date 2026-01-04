@@ -467,7 +467,7 @@ export default function InvestmentPlanner() {
               {t('header.subtitle')}
             </p>
           </div>
-          <div className="flex items-center gap-2 sm:gap-3 animate-fade-in-up animate-delay-300 mt-3 sm:mt-0">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 animate-fade-in-up animate-delay-300 mt-3 sm:mt-0">
             <CurrencySelector />
             <LanguageSelector />
             <Button variant="outline" onClick={handlePrint} className="rounded-2xl btn-enhanced glass text-sm sm:text-base px-3 sm:px-4 py-2">
@@ -482,7 +482,7 @@ export default function InvestmentPlanner() {
         </header>
 
         <Tabs defaultValue="sip" className="grid gap-4 sm:gap-6">
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto no-scrollbar">
             <TabsList className="grid grid-cols-6 sm:grid-cols-6 w-full min-w-max rounded-2xl glass animate-fade-in-up animate-delay-400">
               <TabsTrigger value="sip" className="rounded-2xl tab-enhanced text-xs sm:text-sm px-2 sm:px-3">
                 <PiggyBank className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2 icon-hover" />
@@ -525,13 +525,13 @@ export default function InvestmentPlanner() {
               </CardHeader>
               <CardContent className="grid gap-3 sm:gap-4">
                 <Field label={`${t('sip.monthlyInvestment')} (${s})`}>
-                  <Input type="number" value={sip.monthly} onChange={(e) => setSip({ ...sip, monthly: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
+                  <Input type="number" value={sip.monthly} onChange={(e) => setSip({ ...sip, monthly: num(e.target.value) })} className="input-enhanced focus-enhanced text-base" />
                 </Field>
                 <Field label={t('sip.expectedReturn')} hint={t('sip.hint')}>
-                  <Input type="number" step="0.1" value={sip.annualReturn} onChange={(e) => setSip({ ...sip, annualReturn: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
+                  <Input type="number" step="0.1" value={sip.annualReturn} onChange={(e) => setSip({ ...sip, annualReturn: num(e.target.value) })} className="input-enhanced focus-enhanced text-base" />
                 </Field>
                 <Field label={t('sip.investmentHorizon')}>
-                  <Input type="number" step="1" value={sip.years} onChange={(e) => setSip({ ...sip, years: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
+                  <Input type="number" step="1" value={sip.years} onChange={(e) => setSip({ ...sip, years: num(e.target.value) })} className="input-enhanced focus-enhanced text-base" />
                 </Field>
               </CardContent>
             </Card>
@@ -547,7 +547,7 @@ export default function InvestmentPlanner() {
                   <Metric label={t('sip.wealthGain')} value={formatMoney(Math.max(0, sipFV - sip.monthly * Math.round(sip.years * 12)))} />
                   <Metric label={t('common.years')} value={`${sip.years}`} />
                 </div>
-                <div className="h-64 sm:h-72 lg:h-80 chart-container">
+                <div className="h-56 sm:h-72 lg:h-80 chart-container">
                   <ResponsiveContainer width="100%" height="100%">
                     <AreaChart data={sipData} margin={{ left: 8, right: 8, top: 10, bottom: 0 }}>
                       <defs>
@@ -598,13 +598,13 @@ export default function InvestmentPlanner() {
               </CardHeader>
               <CardContent className="grid gap-3 sm:gap-4">
                 <Field label={`${t('lumpsum.principal')} (${s})`}>
-                  <Input type="number" value={ls.principal} onChange={(e) => setLs({ ...ls, principal: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
+                  <Input type="number" value={ls.principal} onChange={(e) => setLs({ ...ls, principal: num(e.target.value) })} className="input-enhanced focus-enhanced text-base" />
                 </Field>
                 <Field label={t('lumpsum.expectedReturn')}>
-                  <Input type="number" step="0.1" value={ls.annualReturn} onChange={(e) => setLs({ ...ls, annualReturn: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
+                  <Input type="number" step="0.1" value={ls.annualReturn} onChange={(e) => setLs({ ...ls, annualReturn: num(e.target.value) })} className="input-enhanced focus-enhanced text-base" />
                 </Field>
                 <Field label={t('common.years')}>
-                  <Input type="number" step="1" value={ls.years} onChange={(e) => setLs({ ...ls, years: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
+                  <Input type="number" step="1" value={ls.years} onChange={(e) => setLs({ ...ls, years: num(e.target.value) })} className="input-enhanced focus-enhanced text-base" />
                 </Field>
               </CardContent>
             </Card>
@@ -620,7 +620,7 @@ export default function InvestmentPlanner() {
                   <Metric label={t('sip.wealthGain')} value={formatMoney(Math.max(0, lsFV - ls.principal))} />
                   <Metric label={t('common.years')} value={`${ls.years}`} />
                 </div>
-                <div className="h-64 sm:h-72 lg:h-80 chart-container">
+                <div className="h-56 sm:h-72 lg:h-80 chart-container">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={lsData} margin={{ left: 8, right: 8, top: 10, bottom: 0 }}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.3} />
@@ -659,22 +659,22 @@ export default function InvestmentPlanner() {
               </CardHeader>
               <CardContent className="grid gap-3 sm:gap-4">
                 <Field label={`${t('retirement.monthlyExpense')} (${s})`}>
-                  <Input type="number" value={ret.expenseMonthly} onChange={(e) => setRet({ ...ret, expenseMonthly: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
+                  <Input type="number" value={ret.expenseMonthly} onChange={(e) => setRet({ ...ret, expenseMonthly: num(e.target.value) })} className="input-enhanced focus-enhanced text-base" />
                 </Field>
                 <Field label={t('retirement.inflation')}>
-                  <Input type="number" step="0.1" value={ret.inflation} onChange={(e) => setRet({ ...ret, inflation: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
+                  <Input type="number" step="0.1" value={ret.inflation} onChange={(e) => setRet({ ...ret, inflation: num(e.target.value) })} className="input-enhanced focus-enhanced text-base" />
                 </Field>
                 <Field label={t('retirement.yearsToRetirement')}>
-                  <Input type="number" value={ret.yearsToRetire} onChange={(e) => setRet({ ...ret, yearsToRetire: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
+                  <Input type="number" value={ret.yearsToRetire} onChange={(e) => setRet({ ...ret, yearsToRetire: num(e.target.value) })} className="input-enhanced focus-enhanced text-base" />
                 </Field>
                 <Field label={t('retirement.yearsInRetirement')}>
-                  <Input type="number" value={ret.yearsInRetirement} onChange={(e) => setRet({ ...ret, yearsInRetirement: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
+                  <Input type="number" value={ret.yearsInRetirement} onChange={(e) => setRet({ ...ret, yearsInRetirement: num(e.target.value) })} className="input-enhanced focus-enhanced text-base" />
                 </Field>
                 <Field label={t('retirement.postRetirementReturn')}>
-                  <Input type="number" step="0.1" value={ret.postRetReturn} onChange={(e) => setRet({ ...ret, postRetReturn: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
+                  <Input type="number" step="0.1" value={ret.postRetReturn} onChange={(e) => setRet({ ...ret, postRetReturn: num(e.target.value) })} className="input-enhanced focus-enhanced text-base" />
                 </Field>
                 <Field label={t('retirement.safeWithdrawalRate')} hint={t('retirement.swrHint')}>
-                  <Input type="number" step="0.1" value={ret.swr} onChange={(e) => setRet({ ...ret, swr: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
+                  <Input type="number" step="0.1" value={ret.swr} onChange={(e) => setRet({ ...ret, swr: num(e.target.value) })} className="input-enhanced focus-enhanced text-base" />
                 </Field>
               </CardContent>
             </Card>
@@ -716,13 +716,13 @@ export default function InvestmentPlanner() {
               </CardHeader>
               <CardContent className="grid gap-3 sm:gap-4">
                 <Field label={`${t('cagr.initialValue')} (${s})`}>
-                  <Input type="number" value={cagr.initial} onChange={(e) => setCagr({ ...cagr, initial: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
+                  <Input type="number" value={cagr.initial} onChange={(e) => setCagr({ ...cagr, initial: num(e.target.value) })} className="input-enhanced focus-enhanced text-base" />
                 </Field>
                 <Field label={`${t('cagr.finalValue')} (${s})`}>
-                  <Input type="number" value={cagr.final} onChange={(e) => setCagr({ ...cagr, final: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
+                  <Input type="number" value={cagr.final} onChange={(e) => setCagr({ ...cagr, final: num(e.target.value) })} className="input-enhanced focus-enhanced text-base" />
                 </Field>
                 <Field label={t('common.years')}>
-                  <Input type="number" value={cagr.years} onChange={(e) => setCagr({ ...cagr, years: num(e.target.value) })} className="input-enhanced focus-enhanced text-sm sm:text-base" />
+                  <Input type="number" value={cagr.years} onChange={(e) => setCagr({ ...cagr, years: num(e.target.value) })} className="input-enhanced focus-enhanced text-base" />
                 </Field>
               </CardContent>
             </Card>
@@ -778,7 +778,7 @@ export default function InvestmentPlanner() {
                 <CardTitle className="text-gradient text-lg sm:text-xl">{t('allocation.visual')}</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="h-64 sm:h-72 lg:h-80">
+                <div className="h-56 sm:h-72 lg:h-80">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={[{ name: "Portfolio", Equity: alloc.equity, Debt: alloc.debt }]}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.3} />

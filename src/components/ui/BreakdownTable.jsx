@@ -17,18 +17,18 @@ const BreakdownTable = ({ data, type = 'sip' }) => {
             case 'retirement':
                 return (
                     <tr>
-                        <th className="px-4 py-2 text-left text-gray-400 font-medium">Age</th>
-                        <th className="px-4 py-2 text-right text-gray-400 font-medium">Expenses</th>
-                        <th className="px-4 py-2 text-right text-gray-400 font-medium">Corpus</th>
+                        <th className="px-2 py-1 sm:px-4 sm:py-2 text-left text-gray-400 font-medium">Age</th>
+                        <th className="px-2 py-1 sm:px-4 sm:py-2 text-right text-gray-400 font-medium">Expenses</th>
+                        <th className="px-2 py-1 sm:px-4 sm:py-2 text-right text-gray-400 font-medium">Corpus</th>
                     </tr>
                 );
             default: // sip, lumpsum
                 return (
                     <tr>
-                        <th className="px-4 py-2 text-left text-gray-400 font-medium">Year</th>
-                        <th className="px-4 py-2 text-right text-gray-400 font-medium">Invested</th>
-                        <th className="px-4 py-2 text-right text-gray-400 font-medium">Interest</th>
-                        <th className="px-4 py-2 text-right text-gray-400 font-medium">Total Value</th>
+                        <th className="px-2 py-1 sm:px-4 sm:py-2 text-left text-gray-400 font-medium">Year</th>
+                        <th className="px-2 py-1 sm:px-4 sm:py-2 text-right text-gray-400 font-medium">Invested</th>
+                        <th className="px-2 py-1 sm:px-4 sm:py-2 text-right text-gray-400 font-medium">Interest</th>
+                        <th className="px-2 py-1 sm:px-4 sm:py-2 text-right text-gray-400 font-medium">Total Value</th>
                     </tr>
                 );
         }
@@ -39,18 +39,18 @@ const BreakdownTable = ({ data, type = 'sip' }) => {
             if (type === 'retirement') {
                 return (
                     <tr key={index} className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                        <td className="px-4 py-2 text-white">{row.age}</td>
-                        <td className="px-4 py-2 text-right text-white font-mono">{formatMoney(row.expenses)}</td>
-                        <td className="px-4 py-2 text-right text-white font-mono">{formatMoney(row.corpus)}</td>
+                        <td className="px-2 py-1 sm:px-4 sm:py-2 text-white">{row.age}</td>
+                        <td className="px-2 py-1 sm:px-4 sm:py-2 text-right text-white font-mono">{formatMoney(row.expenses)}</td>
+                        <td className="px-2 py-1 sm:px-4 sm:py-2 text-right text-white font-mono">{formatMoney(row.corpus)}</td>
                     </tr>
                 );
             }
             return (
                 <tr key={index} className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                    <td className="px-4 py-2 text-white">{row.year}</td>
-                    <td className="px-4 py-2 text-right text-white font-mono">{formatMoney(row.invested)}</td>
-                    <td className="px-4 py-2 text-right text-white font-mono">{formatMoney(row.interest)}</td>
-                    <td className="px-4 py-2 text-right text-white font-mono">{formatMoney(row.total)}</td>
+                    <td className="px-2 py-1 sm:px-4 sm:py-2 text-white">{row.year}</td>
+                    <td className="px-2 py-1 sm:px-4 sm:py-2 text-right text-white font-mono">{formatMoney(row.invested)}</td>
+                    <td className="px-2 py-1 sm:px-4 sm:py-2 text-right text-white font-mono">{formatMoney(row.interest)}</td>
+                    <td className="px-2 py-1 sm:px-4 sm:py-2 text-right text-white font-mono">{formatMoney(row.total)}</td>
                 </tr>
             );
         });
@@ -58,8 +58,8 @@ const BreakdownTable = ({ data, type = 'sip' }) => {
 
     return (
         <div className="w-full mt-6 overflow-hidden rounded-xl border border-white/10 bg-black/20">
-            <div className="overflow-x-auto max-h-[400px] overflow-y-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
-                <table className="w-full text-sm">
+            <div className="overflow-x-auto max-h-[300px] sm:max-h-[400px] overflow-y-auto no-scrollbar">
+                <table className="w-full text-xs sm:text-sm">
                     <thead className="sticky top-0 bg-black/80 backdrop-blur-sm z-10 border-b border-white/10">
                         {renderHeader()}
                     </thead>
